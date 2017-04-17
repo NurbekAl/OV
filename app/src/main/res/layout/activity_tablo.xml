@@ -6,13 +6,193 @@
     android:layout_height="match_parent"
     tools:context="kg.obval.ov.Tablo">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <EditText
+        android:id="@+id/amountEstEditText"
+        android:layout_width="192dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:inputType="numberSigned"
+        android:layout_marginLeft="14dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        tools:layout_editor_absoluteY="26dp" />
+
+    <Spinner
+        android:id="@+id/spinnerNado"
+        android:layout_width="142dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="7dp"
+        app:layout_constraintLeft_toRightOf="@+id/amountEstEditText"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerEst" />
+
+    <Spinner
+        android:id="@+id/spinnerEst"
+        android:layout_width="142dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="9dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintLeft_toRightOf="@+id/amountEstEditText"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="222dp" />
+
+    <TextView
+        android:id="@+id/tengeView"
+        android:layout_width="39dp"
+        android:layout_height="17dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="14dp"
+        android:text="Tenge"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rublView" />
+
+    <TextView
+        android:id="@+id/euroView"
+        android:layout_width="37dp"
+        android:layout_height="16dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="13dp"
+        android:text="Euro"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dollarView"
+        tools:layout_editor_absoluteX="38dp" />
+
+    <TextView
+        android:id="@+id/euroPokupkaView"
+        android:layout_width="55dp"
+        android:layout_height="17dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="14dp"
+        android:text="0"
+        app:layout_constraintLeft_toRightOf="@+id/euroView"
+        app:layout_constraintTop_toBottomOf="@+id/dollarPokupkaView" />
+
+    <TextView
+        android:id="@+id/euroProdazhaView"
+        android:layout_width="54dp"
+        android:layout_height="18dp"
+        android:layout_marginLeft="9dp"
+        android:layout_marginTop="12dp"
+        android:text="0"
+        app:layout_constraintLeft_toRightOf="@+id/euroPokupkaView"
+        app:layout_constraintTop_toBottomOf="@+id/dollarProdazhaView"
+        tools:layout_editor_absoluteX="151dp"
+        tools:layout_editor_absoluteY="190dp" />
+
+    <TextView
+        android:id="@+id/dollarView"
+        android:layout_width="38dp"
+        android:layout_height="19dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="96dp"
+        android:text="$"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/amountEstEditText"
+        tools:layout_editor_absoluteX="37dp" />
+
+    <TextView
+        android:id="@+id/dollarPokupkaView"
+        android:layout_width="53dp"
+        android:layout_height="18dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="96dp"
+        android:text="0"
+        app:layout_constraintLeft_toRightOf="@+id/dollarView"
+        app:layout_constraintTop_toBottomOf="@+id/amountEstEditText" />
+
+    <TextView
+        android:id="@+id/pokupkaView"
+        android:layout_width="53dp"
+        android:layout_height="19dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="69dp"
+        android:text="pokupka"
+        app:layout_constraintLeft_toRightOf="@+id/dollarView"
+        app:layout_constraintTop_toBottomOf="@+id/amountEstEditText" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="53dp"
+        android:layout_height="17dp"
+        android:layout_marginLeft="79dp"
+        android:layout_marginTop="69dp"
+        android:text="prodaja"
+        app:layout_constraintLeft_toRightOf="@+id/dollarView"
+        app:layout_constraintTop_toBottomOf="@+id/amountEstEditText"
+        tools:layout_editor_absoluteX="150dp" />
+
+    <TextView
+        android:id="@+id/dollarProdazhaView"
+        android:layout_width="55dp"
+        android:layout_height="18dp"
+        android:layout_marginLeft="9dp"
+        android:layout_marginTop="96dp"
+        android:text="0"
+        app:layout_constraintLeft_toRightOf="@+id/dollarPokupkaView"
+        app:layout_constraintTop_toBottomOf="@+id/amountEstEditText"
+        tools:layout_editor_absoluteX="153dp" />
+
+    <TextView
+        android:id="@+id/rublView"
+        android:layout_width="37dp"
+        android:layout_height="15dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="10dp"
+        android:text="Rubl"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/euroView" />
+
+    <TextView
+        android:id="@+id/rublPokupkaView"
+        android:layout_width="55dp"
+        android:layout_height="16dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="9dp"
+        android:text="0"
+        app:layout_constraintLeft_toRightOf="@+id/rublView"
+        app:layout_constraintTop_toBottomOf="@+id/euroPokupkaView" />
+
+    <TextView
+        android:id="@+id/prodajaProdazhaView"
+        android:layout_width="55dp"
+        android:layout_height="16dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="0"
+        app:layout_constraintLeft_toRightOf="@+id/rublPokupkaView"
+        app:layout_constraintTop_toBottomOf="@+id/euroProdazhaView" />
+
+    <TextView
+        android:id="@+id/tengePokupkaView"
+        android:layout_width="55dp"
+        android:layout_height="17dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="10dp"
+        android:text="0"
+        app:layout_constraintLeft_toRightOf="@+id/tengeView"
+        app:layout_constraintTop_toBottomOf="@+id/rublPokupkaView" />
+
+    <TextView
+        android:id="@+id/tengeProdazhaView"
+        android:layout_width="56dp"
+        android:layout_height="16dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="13dp"
+        android:text="0"
+        app:layout_constraintLeft_toRightOf="@+id/tengePokupkaView"
+        app:layout_constraintTop_toBottomOf="@+id/prodajaProdazhaView" />
+
+    <EditText
+        android:id="@+id/amountNadoEdit"
+        android:layout_width="193dp"
+        android:layout_height="43dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/amountEstEditText" />
 
 </android.support.constraint.ConstraintLayout>
