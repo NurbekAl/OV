@@ -32,6 +32,17 @@ public class Tablo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tablo);
 
+        init();
+
+
+
+
+
+
+
+    }
+
+    private void init() {
         amountPresentEdit = (EditText) findViewById(R.id.amountEstEditText);
         spinnerEst = (Spinner) findViewById(R.id.spinnerEst);
         amountNadoEdit = (EditText) findViewById(R.id.amountNadoEdit);
@@ -48,10 +59,6 @@ public class Tablo extends AppCompatActivity {
         tengeView = (TextView) findViewById(R.id.tengeView);
         tengePokupkaView = (TextView) findViewById(R.id.tengePokupkaView);
         tengeProdazhaView =(TextView) findViewById(R.id.tengeProdazhaView);
-
-
-
-
 
     }
 }
