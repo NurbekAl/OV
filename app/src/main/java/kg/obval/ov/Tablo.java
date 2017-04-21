@@ -40,6 +40,18 @@ public class Tablo extends AppCompatActivity {
 
     double inputValue;
 
+    double dollarpokupka;
+    double dollarprodaja;
+    double europokupka;
+    double europrodaja;
+    double rublpokupka;
+    double rubleprodaja;
+    double tengepokupka;
+    double tengeprodaja;
+
+    double result;
+    int usingCurrency;
+    int transferCurrency;
     Calculator calculator;
 
 
@@ -50,8 +62,9 @@ public class Tablo extends AppCompatActivity {
         setContentView(R.layout.activity_tablo);
 
         init();
-        calculator = new Calculator;
+        calculator = new Calculator();
 
+        setCourse();
         setTextOnMoneyTextView();
 
 
@@ -64,8 +77,9 @@ public class Tablo extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 inputValue = Double.parseDouble(kolsummaEdit.getText().toString());
-                summaView.setText(calculator.convert(inputValue, int usingCurrency,
-                                  int transferCurrency).toString());
+                result = calculator.convert(inputValue, 1, 5, 2);
+                summaView.setText(String.valueOf(result));
+
             }
 
             @Override
@@ -75,6 +89,30 @@ public class Tablo extends AppCompatActivity {
 
 
 
+    }
+
+    private void setCourse() {
+        dollarpokupka = 68.0;
+        dollarprodaja = 68.5;
+        europokupka = 80.0;
+        europrodaja = 80.50;
+        rublpokupka = 1.22;
+        rubleprodaja = 1.33;
+        tengepokupka = 0.22;
+        tengeprodaja = 0.33;
+
+
+    }
+
+    private void setTextOnMoneyTextView() {
+        dollarPokupkaView.setText(String.valueOf(dollarpokupka));
+        dollarProdazhaView.setText(String.valueOf(dollarprodaja));
+        euroPokupkaView.setText(String.valueOf(europokupka));
+        euroProdazhaView.setText(String.valueOf(europrodaja));
+        rublPokupkaView.setText(String.valueOf(rublpokupka));
+        rublProdazhaView.setText(String.valueOf(rubleprodaja));
+        tengePokupkaView.setText(String.valueOf(tengepokupka));
+        tengeProdazhaView.setText(String.valueOf(tengeprodaja));
     }
 
     private void init() {
