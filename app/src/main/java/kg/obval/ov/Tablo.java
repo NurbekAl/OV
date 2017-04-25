@@ -8,6 +8,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class Tablo extends AppCompatActivity {
 
     TextView PokupkaView;
@@ -80,7 +83,8 @@ public class Tablo extends AppCompatActivity {
                 if (!inputTextValue.equals("")) {
                     inputValue = Double.parseDouble(inputTextValue);
                     result = calculator.convert(inputValue, 1, 5, 2);
-                    summaView.setText(String.valueOf(result));
+                    double roundResult = new BigDecimal(result).setScale(2, RoundingMode.HALF_UP).doubleValue();
+                    summaView.setText(String.valueOf(roundResult));
                 }
 
             }
