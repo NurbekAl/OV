@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "930448937346",
+    "firebase_url": "https://ovfirebaseproject.firebaseio.com",
+    "project_id": "ovfirebaseproject",
+    "storage_bucket": "ovfirebaseproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:930448937346:android:ebb2dcaec72ec054",
+        "android_client_info": {
+          "package_name": "kg.obval.ov"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "930448937346-g64gos5jbj22r0htnge03319h47rv4ve.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kg.obval.ov",
+            "certificate_hash": "74df6c064fb63a858cfa6d79f836701b529477a5"
+          }
+        },
+        {
+          "client_id": "930448937346-88347ssm12pedu1mi5afgrun3virv12a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJWRYAmdnJhFegJ33cnKKIEcmsVlTLuoI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "930448937346-88347ssm12pedu1mi5afgrun3virv12a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
