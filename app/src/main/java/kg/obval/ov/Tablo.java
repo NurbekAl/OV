@@ -56,7 +56,7 @@ public class Tablo extends AppCompatActivity {
     int usingCurrency;
     int transferCurrency;
     Calculator calculator;
-
+    private KursValut kursValut;
 
 
     @Override
@@ -82,7 +82,7 @@ public class Tablo extends AppCompatActivity {
                 String inputTextValue = kolsummaEdit.getText().toString();
                 if (!inputTextValue.equals("")) {
                     inputValue = Double.parseDouble(inputTextValue);
-                    result = calculator.convert(inputValue, 1, 5, 2);
+                    result = calculator.convert(inputValue, 1, 5, 2, kursValut);
                     double roundResult = new BigDecimal(result).setScale(2, RoundingMode.HALF_UP).doubleValue();
                     summaView.setText(String.valueOf(roundResult));
                 }
