@@ -76,9 +76,12 @@ public class Tablo extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                inputValue = Double.parseDouble(kolsummaEdit.getText().toString());
-                result = calculator.convert(inputValue, 1, 5, 2);
-                summaView.setText(String.valueOf(result));
+                String inputTextValue = kolsummaEdit.getText().toString();
+                if (!inputTextValue.equals("")) {
+                    inputValue = Double.parseDouble(inputTextValue);
+                    result = calculator.convert(inputValue, 1, 5, 2);
+                    summaView.setText(String.valueOf(result));
+                }
 
             }
 
