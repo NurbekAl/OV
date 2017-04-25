@@ -8,7 +8,9 @@ class Calculator {
     public Calculator() {
     }
 
-    public double convert(double inputValue, int usingCurrency, int transferCurrency, int pokupkaOrProdaja) {
+    public double convert(double inputValue, int usingCurrency,
+                          int transferCurrency, int pokupkaOrProdaja,
+                          KursValut kv) {
 
         double result = 0;
 
@@ -19,23 +21,23 @@ class Calculator {
                     break;
                 case 2: //2 == dollar
                     if(pokupkaOrProdaja == 1){
-                        result = inputValue/68.5;
-                    }else result = inputValue/68.0;
+                        result = inputValue/kv.getDollarProdaja();
+                    }else result = inputValue/kv.getDollarPokupka();
                     break;
                 case 3: //3 == euro
                     if(pokupkaOrProdaja == 1){
-                        result = inputValue/80.50;
-                    }else result = inputValue/80.0;
+                        result = inputValue/kv.getEuroProdaja();
+                    }else result = inputValue/kv.getEuroPokupka();
                     break;
                 case 4: //4 == ruble
                     if(pokupkaOrProdaja == 1){
-                        result = inputValue/1.33;
-                    }else result = inputValue/1.22;
+                        result = inputValue/kv.getRubleProdaja();
+                    }else result = inputValue/kv.getRublePokupka();
                     break;
                 case 5: //5 == tenge
                     if(pokupkaOrProdaja == 1){
-                        result = inputValue/0.33;
-                    }else result = inputValue/0.22;
+                        result = inputValue/kv.getTengeProdaja();
+                    }else result = inputValue/kv.getTengePokupka();
                     break;
             }
         }
