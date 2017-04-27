@@ -8,6 +8,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -56,7 +62,10 @@ public class Tablo extends AppCompatActivity {
     int usingCurrency;
     int transferCurrency;
     Calculator calculator;
-    private KursValut kursValut;
+    private Course course;
+
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
 
 
     @Override
@@ -82,7 +91,7 @@ public class Tablo extends AppCompatActivity {
                 String inputTextValue = kolsummaEdit.getText().toString();
                 if (!inputTextValue.equals("")) {
                     inputValue = Double.parseDouble(inputTextValue);
-                    result = calculator.convert(inputValue, 1, 5, 2, kursValut);
+                    result = calculator.convert(inputValue, 1, 5, 2, course);
                     double roundResult = new BigDecimal(result).setScale(2, RoundingMode.HALF_UP).doubleValue();
                     summaView.setText(String.valueOf(roundResult));
                 }
@@ -99,27 +108,40 @@ public class Tablo extends AppCompatActivity {
     }
 
     private void setCourse() {
-        dollarpokupka = 68.0;
-        dollarprodaja = 68.5;
-        europokupka = 80.0;
-        europrodaja = 80.50;
-        rublpokupka = 1.22;
-        rubleprodaja = 1.33;
-        tengepokupka = 0.22;
-        tengeprodaja = 0.33;
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                course = dataSnapshot.getValue(Course.class);
+
+                dollarPokupkaView.setText(String.valueOf(course.getUSDpok()));
+                dollarProdazhaView.setText(String.valueOf(course.getUSDprod()));
+                euroPokupkaView.setText(String.valueOf(course.getEURpok()));
+                euroProdazhaView.setText(String.valueOf(course.getEURprod()));
+                rublPokupkaView.setText(String.valueOf(course.getRUBpok()));
+                rublProdazhaView.setText(String.valueOf(course.getRUBprod()));
+                tengePokupkaView.setText(String.valueOf(course.getKZTpok()));
+                tengeProdazhaView.setText(String.valueOf(course.getKZTprod()));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
 
     }
 
     private void setTextOnMoneyTextView() {
-        dollarPokupkaView.setText(String.valueOf(dollarpokupka));
-        dollarProdazhaView.setText(String.valueOf(dollarprodaja));
-        euroPokupkaView.setText(String.valueOf(europokupka));
-        euroProdazhaView.setText(String.valueOf(europrodaja));
-        rublPokupkaView.setText(String.valueOf(rublpokupka));
-        rublProdazhaView.setText(String.valueOf(rubleprodaja));
-        tengePokupkaView.setText(String.valueOf(tengepokupka));
-        tengeProdazhaView.setText(String.valueOf(tengeprodaja));
+        //dollarPokupkaView.setText(String.valueOf(dollarpokupka));
+        //dollarProdazhaView.setText(String.valueOf(dollarprodaja));
+        //euroPokupkaView.setText(String.valueOf(europokupka));
+        //euroProdazhaView.setText(String.valueOf(europrodaja));
+        //rublPokupkaView.setText(String.valueOf(rublpokupka));
+        //rublProdazhaView.setText(String.valueOf(rubleprodaja));
+        //tengePokupkaView.setText(String.valueOf(tengepokupka));
+        //tengeProdazhaView.setText(String.valueOf(tengeprodaja));
     }
 
     private void init() {
@@ -152,7 +174,8 @@ public class Tablo extends AppCompatActivity {
         summaView = (TextView) findViewById(R.id.summaView);
         proobmen = (Spinner) findViewById(R.id.proobmen);
 
-
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference("course");
 
     }
 }
