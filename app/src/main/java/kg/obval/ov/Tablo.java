@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -79,7 +80,6 @@ public class Tablo extends AppCompatActivity {
         setCourse();
         setTextOnMoneyTextView();
 
-
         kolsummaEdit.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -104,7 +104,20 @@ public class Tablo extends AppCompatActivity {
         });
 
 
+        String[] data = {"KGS","USD", "EUR", "RUB", "KZT"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnervalutado.setAdapter(adapter);
 
+        String[] data1 = {"KGS","USD", "EUR", "RUB", "KZT"};
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data1);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnervalutaposle.setAdapter(adapter1);
+
+        String[] data2 = {"купить", "продать"};
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data2);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        kupitprodat.setAdapter(adapter2);
     }
 
     private void setCourse() {
