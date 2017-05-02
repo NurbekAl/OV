@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -76,7 +78,7 @@ public class Tablo extends AppCompatActivity {
 
         init();
         calculator = new Calculator();
-
+        spinnerHelper();
         setCourse();
         setTextOnMoneyTextView();
 
@@ -88,14 +90,7 @@ public class Tablo extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String inputTextValue = kolsummaEdit.getText().toString();
-                if (!inputTextValue.equals("")) {
-                    inputValue = Double.parseDouble(inputTextValue);
-                    result = calculator.convert(inputValue, 1, 5, 2, course);
-                    double roundResult = new BigDecimal(result).setScale(2, RoundingMode.HALF_UP).doubleValue();
-                    summaView.setText(String.valueOf(roundResult));
-                }
-
+                setResult();
             }
 
             @Override
@@ -103,6 +98,76 @@ public class Tablo extends AppCompatActivity {
             }
         });
 
+        AdapterView.OnItemSelectedListener onItemSelectedListener = new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                setResult();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        };
+
+        kupitprodat.setOnItemSelectedListener(onItemSelectedListener);
+        spinnervalutaposle.setOnItemSelectedListener(onItemSelectedListener);
+        spinnervalutado.setOnItemSelectedListener(onItemSelectedListener);
+    }
+
+    void setResult(){
+        String inputTextValue = kolsummaEdit.getText().toString();
+        if (!inputTextValue.equals("")) {
+            inputValue = Double.parseDouble(inputTextValue);
+            String valDo = String.valueOf(spinnervalutado.getSelectedItem());
+            String valPosle = String.valueOf(spinnervalutaposle.getSelectedItem());
+            String pokupkaOrprodazha = String.valueOf(kupitprodat.getSelectedItem());
+            result = calculator.convert(inputValue, transValToInt(valDo), transValToInt(valPosle), transPokOrProdToInt(pokupkaOrprodazha), course);
+            double roundResult = new BigDecimal(result).setScale(2, RoundingMode.HALF_UP).doubleValue();
+            summaView.setText(String.valueOf(roundResult));
+        }
+    }
+
+    private int transPokOrProdToInt(String pokupkaOrprodazha) {
+        int result;
+        switch (pokupkaOrprodazha) {
+            case "Купить":
+                result = 1;
+                break;
+            case "Продать":
+                result = 2;
+                break;
+            default:
+                result = 0;
+                break;
+        }
+        return result;
+    }
+
+    private int transValToInt(String valDo) {
+        int result;
+        switch (valDo){
+            case "KGS":
+                result =1;
+                break;
+            case "USD":
+                result =2;
+                break;
+            case "EUR":
+                result =3;
+                break;
+            case "RUB":
+                result =4;
+                break;
+            case  "KZT":
+                result =5;
+                break;
+            default:
+                result = 0;
+                break;
+
+        }
+        return result;
     }
 
     private void spinnerHelper(){
@@ -116,7 +181,7 @@ public class Tablo extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnervalutaposle.setAdapter(adapter1);
 
-        String[] data2 = {"купить", "продать"};
+        String[] data2 = {"Купить", "Продать"};
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data2);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         kupitprodat.setAdapter(adapter2);
