@@ -6,6 +6,7 @@ package kg.obval.ov;
 
 class Course {
 
+
     public Course() {
         this.USDpok = 0;
         this.USDprod = 0;
@@ -15,6 +16,8 @@ class Course {
         this.RUBprod = 0;
         this.KZTpok = 0;
         this.KZTprod = 0;
+        this.KGSpok = 0;
+        this.KGSprod = 0;
     }
 
     private double USDpok;
@@ -25,8 +28,11 @@ class Course {
     private double RUBprod;
     private double KZTpok;
     private double KZTprod;
+    private double KGSpok;
+    private double KGSprod;
 
-    public Course(Double USDpok, Double USDprod, Double EURpok, Double EURprod, Double RUBpok, Double RUBprod, Double KZTpok, Double KZTprod) {
+
+    public Course(double USDpok, double USDprod, double EURpok, double EURprod, double RUBpok, double RUBprod, double KZTpok, double KZTprod, double KGSpok, double KGSprod) {
         this.USDpok = USDpok;
         this.USDprod = USDprod;
         this.EURpok = EURpok;
@@ -35,6 +41,8 @@ class Course {
         this.RUBprod = RUBprod;
         this.KZTpok = KZTpok;
         this.KZTprod = KZTprod;
+        this.KGSpok = KGSpok;
+        this.KGSprod = KGSprod;
     }
 
     public Double getUSDpok() {
@@ -69,6 +77,15 @@ class Course {
         return KZTprod;
     }
 
+    public double getKGSpok() {
+        return KGSpok;
+    }
+
+    public double getKGSprod() {
+        return KGSprod;
+    }
+
+
     public void setUSDpok(Double USDpok) {
         this.USDpok = USDpok;
     }
@@ -99,5 +116,13 @@ class Course {
 
     public void setKZTprod(Double KZTprod) {
         this.KZTprod = KZTprod;
+    }
+
+    public void setKGSpok(double KGSpok) {
+        this.KGSpok = KGSpok;
+    }
+
+    public void setKGSprod(double KGSprod) {
+        this.KGSprod = KGSprod;
     }
 }
