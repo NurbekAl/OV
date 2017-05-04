@@ -7,17 +7,20 @@ package kg.obval.ov;
 class Calculator {
     public Calculator() {
     }
+    double result = 0;
 
     public double convert(double inputValue, int usingCurrency,
                           int transferCurrency, int pokupkaOrProdaja,
                           Course kv) {
 
-        double result = 0;
+
 
         if(usingCurrency == 1){ //1 == сом
             switch (transferCurrency){
                 case 1:
-
+                    if(pokupkaOrProdaja == 1){
+                        result = inputValue;
+                    }else result = inputValue;
                     break;
                 case 2: //2 == dollar
                     if(pokupkaOrProdaja == 1){
@@ -40,8 +43,65 @@ class Calculator {
                     }else result = inputValue/kv.getKZTpok();
                     break;
             }
+        }else if(usingCurrency == 2) { //2 == доллар
+            switch (transferCurrency) {
+                case 1:
+                    if (pokupkaOrProdaja == 1) {
+                        result = inputValue * kv.getUSDprod();
+                    } else result = inputValue * kv.getUSDpok();
+                    break;
+                case 2:
+                    if (pokupkaOrProdaja == 1) {
+                        result = inputValue;
+                    } else result = inputValue;
+                    break;
+                case 3: //3 == euro
+                    if (pokupkaOrProdaja == 1) {
+                        result = inputValue * kv.getUSDpok() / kv.getEURprod();
+                    } else result = inputValue * kv.getEURpok() / kv.getUSDprod();
+                    break;
+                case 4: //4 == ruble
+                    if (pokupkaOrProdaja == 1) {
+                        result = inputValue * kv.getUSDpok() / kv.getRUBprod();
+                    } else result = inputValue * kv.getRUBpok() / kv.getUSDprod();
+                    break;
+                case 5: //5 == tenge
+                    if (pokupkaOrProdaja == 1) {
+                        result = inputValue * kv.getUSDpok() / kv.getKZTprod();
+                    } else result = inputValue * kv.getKZTpok() / kv.getUSDprod();
+                    break;
+            }
+        }else if(usingCurrency == 3) { //3 == эвро
+            switch (transferCurrency) {
+                case 1:
+                    if (pokupkaOrProdaja == 1) {
+                        result = inputValue * kv.getEURprod();
+                    } else result = inputValue * kv.getEURpok();
+                    break;
+                case 2: //2 == dollar
+                    if (pokupkaOrProdaja == 1) {
+                        result = inputValue * kv.getEURpok()/kv.getUSDprod();
+                    } else result = inputValue * kv.getUSDpok()/kv.getEURprod();
+                    break;
+                case 3: //3 == euro
+                    if (pokupkaOrProdaja == 1) {
+                        result = inputValue;
+                    } else result = inputValue;
+                    break;
+                case 4: //4 == ruble
+                    if (pokupkaOrProdaja == 1) {
+                        result = inputValue * kv.getEURpok() / kv.getRUBprod();
+                    } else result = inputValue * kv.getRUBpok() / kv.getEURprod();
+                    break;
+                case 5: //5 == tenge
+                    if (pokupkaOrProdaja == 1) {
+                        result = inputValue * kv.getEURpok() / kv.getKZTprod();
+                    } else result = inputValue * kv.getKZTpok() / kv.getEURprod();
+                    break;
+            }
         }
 
         return result;
     }
+
 }
