@@ -125,7 +125,7 @@ public class Tablo extends AppCompatActivity {
             result = calculator.convert(inputValue, transValToInt(valDo), transValToInt(valPosle), transPokOrProdToInt(pokupkaOrprodazha), course);
             double roundResult = new BigDecimal(result).setScale(2, RoundingMode.HALF_UP).doubleValue();
             resultatView.setText(String.valueOf(calculator.getFormula()));
-            summaView.setText(String.valueOf(roundResult));
+            summaView.setText("= " + String.valueOf(roundResult));
         }
     }
 
@@ -255,6 +255,8 @@ public class Tablo extends AppCompatActivity {
         summaView = (TextView) findViewById(R.id.summaView);
         proobmen = (Spinner) findViewById(R.id.proobmen);
         resultatView = (TextView) findViewById(R.id.resultatView);
+
+        resultatView.setTextSize(12);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("course");
