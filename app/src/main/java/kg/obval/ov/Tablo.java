@@ -7,6 +7,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -48,7 +49,7 @@ public class Tablo extends AppCompatActivity {
     Spinner  kupitprodat;
     TextView resultatView;
     TextView summaView;
-    Spinner  proobmen;
+    Button proobmen;
 
     double inputValue;
 
@@ -109,6 +110,13 @@ public class Tablo extends AppCompatActivity {
 
             }
         };
+
+        proobmen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         kupitprodat.setOnItemSelectedListener(onItemSelectedListener);
         spinnervalutaposle.setOnItemSelectedListener(onItemSelectedListener);
@@ -253,8 +261,8 @@ public class Tablo extends AppCompatActivity {
         kupitprodat = (Spinner) findViewById(R.id.kupitprodat);
         resultatView = (TextView) findViewById(R.id.resultatView);
         summaView = (TextView) findViewById(R.id.summaView);
-        proobmen = (Spinner) findViewById(R.id.proobmen);
         resultatView = (TextView) findViewById(R.id.resultatView);
+        proobmen = (Button) findViewById(R.id.proobmen);
 
         resultatView.setTextSize(12);
 
