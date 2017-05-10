@@ -1,5 +1,6 @@
 package kg.obval.ov;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -114,7 +115,8 @@ public class Tablo extends AppCompatActivity {
         proobmen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(Tablo.this, BankActivity.class);
+                startActivity(intent);
             }
         });
 
