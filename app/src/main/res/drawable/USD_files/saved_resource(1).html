@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!-- saved from url=(0018)https://valuta.kg/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!--<base target="_top">--><base href="." target="_top"></head>
+<body border="0" margin="0" style="margin: 0; padding: 0">
+<script src="./easeljs-0.8.1.min.js"></script>
+<script src="./tweenjs-0.6.1.min.js"></script>
+<script src="./movieclip-0.8.1.min.js"></script>
+<script src="./preloadjs-0.6.1.min.js"></script>
+<script src="./valuta.js"></script>
+
+<script>
+var canvas, stage, exportRoot;
+
+function init() {
+	canvas = document.getElementById("canvas");
+	images = images||{};
+
+	var loader = new createjs.LoadQueue(false);
+	loader.addEventListener("fileload", handleFileLoad);
+	loader.addEventListener("complete", handleComplete);
+	loader.loadManifest(lib.properties.manifest);
+}
+
+function handleFileLoad(evt) {
+	if (evt.item.type == "image") { images[evt.item.id] = evt.result; }
+}
+
+function handleComplete(evt) {
+	exportRoot = new lib.Безымянный3();
+
+	stage = new createjs.Stage(canvas);
+	stage.addChild(exportRoot);
+	stage.update();
+
+	createjs.Ticker.setFPS(lib.properties.fps);
+	createjs.Ticker.addEventListener("tick", stage);
+}
+
+window.onload=init;
+
+</script>
+<a href="https://intelliants.com/bdn/delivery/ck.php?oaparams=2__bannerid=80__zoneid=1__cb=e3f066f49a__oadest=http%3A%2F%2Fidrink.kg%2F%3Futm_source%3DVALUTA%26utm_medium%3Dbanner%26utm_campaign%3DSALE" target="_blank"><canvas id="canvas" width="360" height="400" style="background-color:#FFFFFF"></canvas></a><div id="beacon_e3f066f49a" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="./lg(3).php" width="0" height="0" alt="" style="width: 0px; height: 0px;"></div>
+
+
+</body></html>

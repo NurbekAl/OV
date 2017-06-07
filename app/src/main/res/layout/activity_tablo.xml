@@ -3,227 +3,50 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/back"
     android:layout_height="match_parent"
     tools:context="kg.obval.ov.Tablo">
-
-    <TextView
-        android:id="@+id/summaView"
-        android:layout_width="90dp"
-        android:layout_height="38dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="16dp"
-        android:text="     Сумма"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toRightOf="@+id/resultatView"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
-        tools:layout_conversion_absoluteHeight="40dp"
-        tools:layout_conversion_absoluteWidth="65dp"
-        tools:layout_conversion_absoluteX="179dp"
-        tools:layout_conversion_absoluteY="315dp" />
 
     <Spinner
         android:id="@+id/kupitprodat"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginLeft="0dp"
+        android:layout_marginLeft="7dp"
         android:layout_marginTop="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
         tools:layout_conversion_absoluteHeight="40dp"
         tools:layout_conversion_absoluteWidth="111dp"
         tools:layout_conversion_absoluteX="18dp"
-        tools:layout_conversion_absoluteY="329dp" />
+        tools:layout_conversion_absoluteY="329dp"
+        android:layout_marginStart="16dp" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/linearLayout3"
-        tools:layout_conversion_absoluteX="0dp"
-        tools:layout_conversion_absoluteY="67dp"
-        tools:layout_conversion_absoluteWidth="384dp"
-        tools:layout_conversion_absoluteHeight="90dp"
-        tools:layout_editor_absoluteY="52dp"
-        tools:layout_editor_absoluteX="-37dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/dollarView"
-                android:layout_width="match_parent"
-                android:layout_height="18dp"
-                android:layout_marginLeft="36dp"
-                android:layout_marginTop="18dp"
-                android:text="Dollar"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/amountEstEditText"
-                tools:layout_editor_absoluteX="37dp" />
-
-            <TextView
-                android:id="@+id/euroView"
-                android:layout_width="match_parent"
-                android:layout_height="18dp"
-                android:layout_marginLeft="36dp"
-                android:text="Euro"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dollarView"
-                tools:layout_editor_absoluteX="38dp" />
-
-            <TextView
-                android:id="@+id/rublView"
-                android:layout_width="match_parent"
-                android:layout_height="18dp"
-                android:layout_marginLeft="36dp"
-                android:text="Rubl"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/euroView" />
-
-            <TextView
-                android:id="@+id/tengeView"
-                android:layout_width="match_parent"
-                android:layout_height="18dp"
-                android:layout_marginLeft="36dp"
-                android:text="Tenge"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rublView" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/pokupkaView"
-                android:layout_width="match_parent"
-                android:layout_height="18dp"
-                android:text="Покупка"
-                android:textAlignment="center"
-                app:layout_constraintLeft_toRightOf="@+id/dollarView"
-                app:layout_constraintTop_toBottomOf="@+id/amountEstEditText" />
-
-            <TextView
-                android:id="@+id/dollarPokupkaView"
-                android:layout_width="match_parent"
-                android:layout_height="18dp"
-                android:text="0"
-                android:textAlignment="center"
-                app:layout_constraintLeft_toRightOf="@+id/dollarView"
-                app:layout_constraintTop_toBottomOf="@+id/amountEstEditText" />
-
-            <TextView
-                android:id="@+id/euroPokupkaView"
-                android:layout_width="match_parent"
-                android:layout_height="18dp"
-                android:text="0"
-                android:textAlignment="center"
-                app:layout_constraintLeft_toRightOf="@+id/euroView"
-                app:layout_constraintTop_toBottomOf="@+id/dollarPokupkaView" />
-
-            <TextView
-                android:id="@+id/rublPokupkaView"
-                android:layout_width="match_parent"
-                android:layout_height="18dp"
-                android:text="0"
-                android:textAlignment="center"
-                app:layout_constraintLeft_toRightOf="@+id/rublView"
-                app:layout_constraintTop_toBottomOf="@+id/euroPokupkaView" />
-
-            <TextView
-                android:id="@+id/tengePokupkaView"
-                android:layout_width="match_parent"
-                android:layout_height="18dp"
-                android:text="0"
-                android:textAlignment="center"
-                app:layout_constraintLeft_toRightOf="@+id/tengeView"
-                app:layout_constraintTop_toBottomOf="@+id/rublPokupkaView" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/prodajaView"
-                android:layout_width="match_parent"
-                android:layout_height="18dp"
-                android:text="Продажа"
-                android:textAlignment="center"
-                app:layout_constraintLeft_toRightOf="@+id/dollarView"
-                app:layout_constraintTop_toBottomOf="@+id/amountEstEditText" />
-
-            <TextView
-                android:id="@+id/dollarProdazhaView"
-                android:layout_width="match_parent"
-                android:layout_height="18dp"
-                android:text="0"
-                android:textAlignment="center"
-                app:layout_constraintLeft_toRightOf="@+id/dollarPokupkaView"
-                app:layout_constraintTop_toBottomOf="@+id/amountEstEditText"
-                tools:layout_editor_absoluteX="153dp" />
-
-            <TextView
-                android:id="@+id/euroProdazhaView"
-                android:layout_width="match_parent"
-                android:layout_height="18dp"
-                android:text="0"
-                android:textAlignment="center"
-                app:layout_constraintLeft_toRightOf="@+id/euroPokupkaView"
-                app:layout_constraintTop_toBottomOf="@+id/dollarProdazhaView"
-                tools:layout_editor_absoluteX="151dp"
-                tools:layout_editor_absoluteY="190dp" />
-
-            <TextView
-                android:id="@+id/rublProdajaView"
-                android:layout_width="match_parent"
-                android:layout_height="18dp"
-                android:text="0"
-                android:textAlignment="center"
-                app:layout_constraintLeft_toRightOf="@+id/rublPokupkaView"
-                app:layout_constraintTop_toBottomOf="@+id/euroProdazhaView" />
-
-            <TextView
-                android:id="@+id/tengeProdazhaView"
-                android:layout_width="match_parent"
-                android:layout_height="18dp"
-                android:text="0"
-                android:textAlignment="center"
-                app:layout_constraintLeft_toRightOf="@+id/tengePokupkaView"
-                app:layout_constraintTop_toBottomOf="@+id/rublProdajaView" />
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:id="@+id/linearLayout6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        tools:layout_conversion_absoluteHeight="40dp"
+        tools:layout_conversion_absoluteWidth="384dp"
         tools:layout_conversion_absoluteX="0dp"
         tools:layout_conversion_absoluteY="232dp"
-        tools:layout_conversion_absoluteWidth="384dp"
-        tools:layout_conversion_absoluteHeight="40dp"
-        tools:layout_editor_absoluteX="0dp"
-        android:layout_marginTop="50dp"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout">
 
         <LinearLayout
-            android:layout_width="142dp"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <EditText
                 android:id="@+id/kolsummaedit"
-                android:layout_width="123dp"
+                android:layout_width="150dp"
                 android:layout_height="40dp"
                 android:layout_alignEnd="@+id/amountEstEditText"
                 android:layout_alignParentLeft="true"
@@ -238,15 +61,15 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_weight="1.5"
             android:orientation="horizontal">
 
             <Spinner
                 android:id="@+id/spinnervalutado"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignTop="@+id/linearLayout6"
@@ -259,11 +82,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="на"
-                android:textAlignment="gravity" />
+                android:textAlignment="center" />
 
             <Spinner
                 android:id="@+id/spinnervalutaposle"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
@@ -276,28 +99,215 @@
         </LinearLayout>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/resultatView"
-        android:layout_width="139dp"
-        android:layout_height="26dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:text="            формула:"
-        app:layout_constraintLeft_toRightOf="@+id/kupitprodat"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
-        tools:layout_conversion_absoluteHeight="16dp"
-        tools:layout_conversion_absoluteWidth="65dp"
-        tools:layout_conversion_absoluteX="284dp"
-        tools:layout_conversion_absoluteY="329dp" />
-
     <Button
         android:id="@+id/proobmen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginRight="31dp"
+        android:layout_marginTop="48dp"
         android:text="Произвести \nобмен"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/summaView" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        android:layout_marginEnd="16dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/kupitprodat"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="37dp"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
+        android:id="@+id/linearLayout"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintHorizontal_bias="0.495">
+
+        <TextView
+            android:id="@+id/resultatView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Формула:"
+            android:textAlignment="center"
+            app:layout_constraintLeft_toRightOf="@+id/kupitprodat"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
+            tools:layout_conversion_absoluteHeight="16dp"
+            tools:layout_conversion_absoluteWidth="65dp"
+            tools:layout_conversion_absoluteX="284dp"
+            tools:layout_conversion_absoluteY="329dp" />
+
+        <TextView
+            android:id="@+id/summaView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:text="Сумма"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintLeft_toRightOf="@+id/resultatView"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
+            tools:layout_conversion_absoluteHeight="40dp"
+            tools:layout_conversion_absoluteWidth="65dp"
+            tools:layout_conversion_absoluteX="179dp"
+            tools:layout_conversion_absoluteY="315dp" />
+
+    </LinearLayout>
+
+
+
+    <GridLayout
+        android:layout_width="322dp"
+        android:layout_height="199dp"
+        android:layout_gravity="center"
+        android:columnCount="3"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/gridLayout">
+
+        <TextView
+            android:id="@+id/valutaText"
+            android:layout_width="60dp"
+            android:layout_height="@dimen/height"
+            android:text="Валюта"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/pokupkaText"
+            android:layout_width="60dp"
+            android:layout_height="@dimen/height"
+            android:text="Покупка"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/prodajaText"
+            android:layout_height="@dimen/height"
+            android:text="Продажа"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/dollarText"
+            android:layout_width="60dp"
+            android:layout_height="@dimen/height"
+            android:text="USD"
+            android:textAlignment="center"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/dollarPokupkaText"
+            android:layout_width="60dp"
+            android:layout_height="25dp"
+            android:text="0"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+             />
+
+        <TextView
+            android:id="@+id/dollarProdazhaText"
+            android:layout_width="60dp"
+            android:layout_height="@dimen/height"
+            android:text="0"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+             />
+
+        <TextView
+            android:id="@+id/euroText"
+            android:layout_width="60dp"
+            android:layout_height="25dp"
+            android:text="EUR"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+             />
+
+        <TextView
+            android:id="@+id/euroPokupkaText"
+            android:layout_width="60dp"
+            android:layout_height="@dimen/height"
+            android:text="0"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            />
+
+        <TextView
+            android:id="@+id/euroProdazhaText"
+            android:layout_width="60dp"
+            android:layout_height="@dimen/height"
+            android:text="0"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            />
+
+        <TextView
+            android:id="@+id/rublText"
+            android:layout_width="60dp"
+            android:layout_height="@dimen/height"
+            android:layout_weight="1"
+            android:text="RUB"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            />
+
+        <TextView
+            android:id="@+id/rublPokupkaText"
+            android:layout_width="60dp"
+            android:layout_height="@dimen/height"
+            android:text="0"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            />
+
+        <TextView
+            android:id="@+id/rublProdajaText"
+            android:layout_width="60dp"
+            android:layout_height="@dimen/height"
+            android:text="0"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            />
+
+        <TextView
+            android:id="@+id/tengeText"
+            android:layout_width="60dp"
+            android:layout_height="@dimen/height"
+            android:layout_weight="1"
+            android:text="KZT"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            />
+
+        <TextView
+            android:id="@+id/tengePokupkaText"
+            android:layout_width="60dp"
+            android:layout_height="@dimen/height"
+            android:text="0"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            />
+
+        <TextView
+            android:id="@+id/tengeProdazhaText"
+            android:layout_width="60dp"
+            android:layout_height="@dimen/height"
+            android:text="0"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            />
+
+
+    </GridLayout>
 
 </android.support.constraint.ConstraintLayout>

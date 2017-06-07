@@ -237,24 +237,24 @@ public class Tablo extends AppCompatActivity {
 
     private void init() {
 
-        PokupkaView = (TextView) findViewById(R.id.pokupkaView);
-        ProdajaView = (TextView) findViewById(R.id.prodajaView);
+        PokupkaView = (TextView) findViewById(R.id.pokupkaText);
+        ProdajaView = (TextView) findViewById(R.id.prodajaText);
 
-        dollarView = (TextView)  findViewById(R.id.dollarView);
-        dollarPokupkaView = (TextView) findViewById(R.id.dollarPokupkaView);
-        dollarProdazhaView = (TextView) findViewById(R.id.dollarProdazhaView);
+        dollarView = (TextView)  findViewById(R.id.dollarText);
+        dollarPokupkaView = (TextView) findViewById(R.id.dollarPokupkaText);
+        dollarProdazhaView = (TextView) findViewById(R.id.dollarProdazhaText);
 
-        euroView = (TextView) findViewById(R.id.euroView);
-        euroPokupkaView = (TextView) findViewById(R.id.euroPokupkaView);
-        euroProdazhaView = (TextView) findViewById(R.id.euroProdazhaView);
+        euroView = (TextView) findViewById(R.id.euroText);
+        euroPokupkaView = (TextView) findViewById(R.id.euroPokupkaText);
+        euroProdazhaView = (TextView) findViewById(R.id.euroProdazhaText);
 
-        rublView = (TextView) findViewById(R.id.rublView);
-        rublPokupkaView = (TextView) findViewById(R.id.rublPokupkaView);
-        rublProdazhaView = (TextView) findViewById(R.id.rublProdajaView);
+        rublView = (TextView) findViewById(R.id.rublText);
+        rublPokupkaView = (TextView) findViewById(R.id.rublPokupkaText);
+        rublProdazhaView = (TextView) findViewById(R.id.rublProdajaText);
 
-        tengeView = (TextView) findViewById(R.id.tengeView);
-        tengePokupkaView = (TextView) findViewById(R.id.tengePokupkaView);
-        tengeProdazhaView =(TextView) findViewById(R.id.tengeProdazhaView);
+        tengeView = (TextView) findViewById(R.id.tengeText);
+        tengePokupkaView = (TextView) findViewById(R.id.tengePokupkaText);
+        tengeProdazhaView =(TextView) findViewById(R.id.tengeProdazhaText);
 
         kolsummaEdit = (EditText)  findViewById(R.id.kolsummaedit);
         spinnervalutado = (Spinner) findViewById(R.id.spinnervalutado);
