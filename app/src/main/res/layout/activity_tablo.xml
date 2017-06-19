@@ -3,33 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/back"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context="kg.obval.ov.Tablo">
 
 
     <Button
         android:id="@+id/proobmen"
-        android:layout_width="117dp"
-        android:layout_height="48dp"
-        android:layout_marginRight="16dp"
-        android:text="Произвести \nобмен"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.938"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Произвести\nобмен"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="16dp" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:id="@+id/linearLayout"
         android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:orientation="horizontal"
         app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintRight_toRightOf="parent"
         tools:layout_editor_absoluteY="0dp">
 
     </LinearLayout>
@@ -56,6 +58,8 @@
             android:id="@+id/valutaText"
             android:layout_width="100dp"
             android:layout_height="@dimen/height"
+            android:layout_column="0"
+            android:layout_row="5"
             android:text="Валюта"
             android:textAlignment="center" />
 
@@ -73,13 +77,23 @@
             android:text="Продажа"
             android:textAlignment="center" />
 
-        <TextView
-            android:id="@+id/dollarText"
-            android:layout_width="100dp"
-            android:layout_height="@dimen/height"
-            android:text="USD"
-            android:textAlignment="center"
-            android:textColor="@color/black" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="25dp"
+                android:src="@drawable/usa" />
+
+            <TextView
+                android:id="@+id/dollarText"
+                android:layout_width="80dp"
+                android:layout_height="@dimen/height"
+                android:text="USD"
+                android:textAlignment="center"
+                android:textColor="@color/black" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/dollarPokupkaText"
@@ -97,13 +111,25 @@
             android:textAlignment="center"
             android:textColor="@color/black" />
 
-        <TextView
-            android:id="@+id/euroText"
-            android:layout_width="100dp"
-            android:layout_height="25dp"
-            android:text="EUR"
-            android:textAlignment="center"
-            android:textColor="@color/black" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="25dp"
+                android:src="@drawable/europe" />
+
+            <TextView
+                android:id="@+id/euroText"
+                android:layout_width="80dp"
+                android:layout_height="25dp"
+                android:text="EUR"
+                android:textAlignment="center"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/euroPokupkaText"
@@ -121,13 +147,25 @@
             android:textAlignment="center"
             android:textColor="@color/black" />
 
-        <TextView
-            android:id="@+id/rublText"
-            android:layout_width="100dp"
-            android:layout_height="@dimen/height"
-            android:text="RUB"
-            android:textAlignment="center"
-            android:textColor="@color/black" />
+        <LinearLayout
+            android:id="@+id/rubButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            style="?android:attr/borderlessButtonStyle">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="25dp"
+                android:src="@drawable/russia"/>
+            <TextView
+                android:id="@+id/rublText"
+                android:layout_width="80dp"
+                android:layout_height="@dimen/height"
+                android:text="RUB"
+                android:textAlignment="center"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/rublPokupkaText"
@@ -197,6 +235,7 @@
             android:id="@+id/naView"
             android:layout_width="41dp"
             android:layout_height="40dp"
+            android:gravity="center"
             android:text="на" />
 
         <Spinner
@@ -228,8 +267,9 @@
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="Формула:"
-             />
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/summaView"
@@ -238,7 +278,9 @@
             android:layout_weight="1"
             android:paddingLeft="2dp"
             android:paddingRight="2dp"
+            android:gravity="center"
             android:text="Сумма"
+            android:textColor="@color/black"
             android:textSize="12sp" />
 
 

@@ -10,8 +10,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -187,10 +189,7 @@ public class Tablo extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnervalutado.setAdapter(adapter);
 
-        String[] data1 = {"KGS","USD", "EUR", "RUB", "KZT"};
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data1);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnervalutaposle.setAdapter(adapter1);
+        spinnervalutaposle.setAdapter(adapter);
 
         String[] data2 = {"Купить", "Продать"};
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data2);
@@ -270,6 +269,14 @@ public class Tablo extends AppCompatActivity {
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("course");
+
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.rubButton);
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Tablo.this, "test", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 }
