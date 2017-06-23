@@ -269,11 +269,12 @@
         android:layout_width="50dp"
         android:layout_height="55dp"
         android:src="@drawable/whatsapp2"
-        android:id="@+id/imageView"
+        android:id="@+id/whatsapp2View"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        android:clickable="true"/>
 
     <TextView
         android:id="@+id/textView3"
@@ -285,7 +286,7 @@
         android:textColor="@color/black"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/imageView"
+        app:layout_constraintRight_toLeftOf="@+id/whatsapp2View"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/proobmen"
         app:layout_constraintVertical_bias="1.0" />

@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -53,7 +54,7 @@ public class Tablo extends AppCompatActivity {
     TextView resultatView;
     TextView summaView;
     Button proobmen;
-
+    ImageView whatsapp2View;
     double inputValue;
 
     double dollarpokupka;
@@ -264,7 +265,7 @@ public class Tablo extends AppCompatActivity {
         summaView = (TextView) findViewById(R.id.summaView);
         resultatView = (TextView) findViewById(R.id.resultatView);
         proobmen = (Button) findViewById(R.id.proobmen);
-
+        whatsapp2View = (ImageView) findViewById(R.id.whatsapp2View);
         resultatView.setTextSize(12);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -275,8 +276,10 @@ public class Tablo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(Tablo.this, "test", Toast.LENGTH_SHORT).show();
+
             }
         });
+
 
     }
 }
