@@ -1,6 +1,8 @@
 package kg.obval.ov;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -45,6 +47,7 @@ public class Tablo extends AppCompatActivity {
     TextView tengeView;
     TextView tengePokupkaView;
     TextView tengeProdazhaView;
+    TextView dateText;
 
     EditText kolsummaEdit;
     Spinner  spinnervalutado;
@@ -213,6 +216,7 @@ public class Tablo extends AppCompatActivity {
                 rublProdazhaView.setText(String.valueOf(course.getRUBprod()));
                 tengePokupkaView.setText(String.valueOf(course.getKZTpok()));
                 tengeProdazhaView.setText(String.valueOf(course.getKZTprod()));
+                dateText.setText(String.valueOf("Курс валют на " + course.getDate() + "г. " + course.getTime() + " часов"));
             }
 
             @Override
@@ -266,7 +270,30 @@ public class Tablo extends AppCompatActivity {
         resultatView = (TextView) findViewById(R.id.resultatView);
         proobmen = (Button) findViewById(R.id.proobmen);
         whatsapp2View = (ImageView) findViewById(R.id.whatsapp2View);
+        whatsapp2View.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PackageManager pm=getPackageManager();
+                try {
+
+                    Intent waIntent = new Intent(Intent.ACTION_SEND);
+                    waIntent.setType("text/plain");
+                    String text = "";
+
+                    PackageInfo info=pm.getPackageInfo("com.whatsapp", PackageManager.GET_META_DATA);
+                    waIntent.setPackage("com.whatsapp");
+
+                    waIntent.putExtra(Intent.EXTRA_TEXT, text);
+                    startActivity(Intent.createChooser(waIntent, "Share with"));
+
+                } catch (PackageManager.NameNotFoundException e) {
+                    Toast.makeText(Tablo.this, "WhatsApp not Installed", Toast.LENGTH_SHORT)
+                            .show();
+                }
+            }
+        });
         resultatView.setTextSize(12);
+        dateText = (TextView) findViewById(R.id.dateText);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("course");
