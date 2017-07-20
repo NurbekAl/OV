@@ -2,4 +2,5 @@
 <resources>
     <dimen name="height">25dp</dimen>
     <dimen name="spaceHeight">1px</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

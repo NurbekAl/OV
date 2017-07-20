@@ -4,6 +4,8 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -17,6 +19,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -50,6 +54,7 @@ public class Tablo extends AppCompatActivity {
     TextView tengeView;
     TextView tengePokupkaView;
     TextView tengeProdazhaView;
+    TextView dateText;
 
     EditText kolsummaEdit;
     Spinner spinnervalutado;
@@ -59,7 +64,7 @@ public class Tablo extends AppCompatActivity {
     TextView resultatView;
     TextView summaView;
     Button proobmen;
-
+    ImageView whatsapp2View;
     double inputValue;
 
     double dollarpokupka;
@@ -219,11 +224,7 @@ public class Tablo extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnervalutado.setAdapter(adapter);
 
-        String[] data1 = {"KGS", "USD", "EUR", "RUB", "KZT"};
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data1);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnervalutaposle.setAdapter(adapter1);
-
+        spinnervalutaposle.setAdapter(adapter);
         String[] data2 = {"Купить", "Продать"};
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data2);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -245,6 +246,7 @@ public class Tablo extends AppCompatActivity {
                 rublProdazhaView.setText(String.valueOf(course.getRUBprod()));
                 tengePokupkaView.setText(String.valueOf(course.getKZTpok()));
                 tengeProdazhaView.setText(String.valueOf(course.getKZTprod()));
+                dateText.setText(String.valueOf("Курс валют на " + course.getDate() + "г. " + course.getTime() + " часов"));
             }
 
             @Override
@@ -272,9 +274,9 @@ public class Tablo extends AppCompatActivity {
         PokupkaView = (TextView) findViewById(R.id.pokupkaText);
         ProdajaView = (TextView) findViewById(R.id.prodajaText);
 
-        dollarView = (TextView) findViewById(R.id.dollarView);
-        dollarPokupkaView = (TextView) findViewById(R.id.dollarPokupkaView);
-        dollarProdazhaView = (TextView) findViewById(R.id.dollarProdazhaView);
+        dollarView = (TextView) findViewById(R.id.dollarText);
+        dollarPokupkaView = (TextView) findViewById(R.id.dollarPokupkaText);
+        dollarProdazhaView = (TextView) findViewById(R.id.dollarProdazhaText);
 
         euroView = (TextView) findViewById(R.id.euroText);
         euroPokupkaView = (TextView) findViewById(R.id.euroPokupkaText);
@@ -284,9 +286,9 @@ public class Tablo extends AppCompatActivity {
         rublPokupkaView = (TextView) findViewById(R.id.rublPokupkaText);
         rublProdazhaView = (TextView) findViewById(R.id.rublProdajaText);
 
-        tengeView = (TextView) findViewById(R.id.tengeView);
-        tengePokupkaView = (TextView) findViewById(R.id.tengePokupkaView);
-        tengeProdazhaView = (TextView) findViewById(R.id.tengeProdazhaView);
+        tengeView = (TextView) findViewById(R.id.tengeText);
+        tengePokupkaView = (TextView) findViewById(R.id.tengePokupkaText);
+        tengeProdazhaView = (TextView) findViewById(R.id.tengeProdazhaText);
 
         kolsummaEdit = (EditText) findViewById(R.id.kolsummaedit);
         spinnervalutado = (Spinner) findViewById(R.id.spinnervalutado);
@@ -297,8 +299,31 @@ public class Tablo extends AppCompatActivity {
         summaView = (TextView) findViewById(R.id.summaView);
         resultatView = (TextView) findViewById(R.id.resultatView);
         proobmen = (Button) findViewById(R.id.proobmen);
+        whatsapp2View = (ImageView) findViewById(R.id.whatsapp2View);
+        whatsapp2View.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PackageManager pm=getPackageManager();
+                try {
 
+                    Intent waIntent = new Intent(Intent.ACTION_SEND);
+                    waIntent.setType("text/plain");
+                    String text = "";
+
+                    PackageInfo info=pm.getPackageInfo("com.whatsapp", PackageManager.GET_META_DATA);
+                    waIntent.setPackage("com.whatsapp");
+
+                    waIntent.putExtra(Intent.EXTRA_TEXT, text);
+                    startActivity(Intent.createChooser(waIntent, "Share with"));
+
+                } catch (PackageManager.NameNotFoundException e) {
+                    Toast.makeText(Tablo.this, "WhatsApp not Installed", Toast.LENGTH_SHORT)
+                            .show();
+                }
+            }
+        });
         resultatView.setTextSize(12);
+        dateText = (TextView) findViewById(R.id.dateText);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("course");
@@ -308,5 +333,14 @@ public class Tablo extends AppCompatActivity {
         dialog.setCancelable(true);
         dialog.setTitle("О проекте");
         dialog.setTitle("Инструкция");
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.rubButton);
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Tablo.this, "test", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
     }
 }

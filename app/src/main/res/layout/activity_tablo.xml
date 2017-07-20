@@ -3,33 +3,39 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/back"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context="kg.obval.ov.Tablo">
 
 
     <Button
         android:id="@+id/proobmen"
-        android:layout_width="117dp"
-        android:layout_height="48dp"
-        android:layout_marginRight="16dp"
-        android:text="Произвести \nобмен"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.938"
+        android:layout_marginStart="8dp"
+        android:text="Произвести\nобмен"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toTopOf="@+id/gridLayout"
+        android:layout_marginTop="8dp"
+        app:layout_constraintVertical_bias="0.834" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:id="@+id/linearLayout"
         android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:orientation="horizontal"
         app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintRight_toRightOf="parent"
         tools:layout_editor_absoluteY="0dp">
 
     </LinearLayout>
@@ -38,16 +44,16 @@
     <GridLayout
         android:id="@+id/gridLayout"
         android:layout_width="0dp"
-        android:layout_height="183dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="50dp"
         android:columnCount="3"
         android:orientation="horizontal"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -56,6 +62,8 @@
             android:id="@+id/valutaText"
             android:layout_width="100dp"
             android:layout_height="@dimen/height"
+            android:layout_column="0"
+            android:layout_row="5"
             android:text="Валюта"
             android:textAlignment="center" />
 
@@ -73,13 +81,23 @@
             android:text="Продажа"
             android:textAlignment="center" />
 
-        <TextView
-            android:id="@+id/dollarText"
-            android:layout_width="100dp"
-            android:layout_height="@dimen/height"
-            android:text="USD"
-            android:textAlignment="center"
-            android:textColor="@color/black" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="25dp"
+                android:src="@drawable/usa" />
+
+            <TextView
+                android:id="@+id/dollarText"
+                android:layout_width="80dp"
+                android:layout_height="@dimen/height"
+                android:text="USD"
+                android:textAlignment="center"
+                android:textColor="@color/black" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/dollarPokupkaText"
@@ -97,13 +115,25 @@
             android:textAlignment="center"
             android:textColor="@color/black" />
 
-        <TextView
-            android:id="@+id/euroText"
-            android:layout_width="100dp"
-            android:layout_height="25dp"
-            android:text="EUR"
-            android:textAlignment="center"
-            android:textColor="@color/black" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="25dp"
+                android:src="@drawable/europe" />
+
+            <TextView
+                android:id="@+id/euroText"
+                android:layout_width="80dp"
+                android:layout_height="25dp"
+                android:text="EUR"
+                android:textAlignment="center"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/euroPokupkaText"
@@ -121,13 +151,25 @@
             android:textAlignment="center"
             android:textColor="@color/black" />
 
-        <TextView
-            android:id="@+id/rublText"
-            android:layout_width="100dp"
-            android:layout_height="@dimen/height"
-            android:text="RUB"
-            android:textAlignment="center"
-            android:textColor="@color/black" />
+        <LinearLayout
+            android:id="@+id/rubButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="25dp"
+                android:src="@drawable/russia" />
+
+            <TextView
+                android:id="@+id/rublText"
+                android:layout_width="80dp"
+                android:layout_height="@dimen/height"
+                android:text="RUB"
+                android:textAlignment="center"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/rublPokupkaText"
@@ -145,13 +187,24 @@
             android:textAlignment="center"
             android:textColor="@color/black" />
 
-        <TextView
-            android:id="@+id/tengeText"
-            android:layout_width="100dp"
-            android:layout_height="@dimen/height"
-            android:text="KZT"
-            android:textAlignment="center"
-            android:textColor="@color/black" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="25dp"
+                android:src="@drawable/kazahstan" />
+
+            <TextView
+                android:id="@+id/tengeText"
+                android:layout_width="80dp"
+                android:layout_height="@dimen/height"
+                android:text="KZT"
+                android:textAlignment="center"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/tengePokupkaText"
@@ -176,7 +229,7 @@
         android:id="@+id/linearLayout2"
         android:layout_width="368dp"
         android:layout_height="40dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="38dp"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@+id/gridLayout"
         tools:layout_editor_absoluteX="8dp">
@@ -197,6 +250,7 @@
             android:id="@+id/naView"
             android:layout_width="41dp"
             android:layout_height="40dp"
+            android:gravity="center"
             android:text="на" />
 
         <Spinner
@@ -209,13 +263,63 @@
     </LinearLayout>
 
     <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp"/>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="55dp"
+        android:src="@drawable/whatsapp2"
+        android:id="@+id/whatsapp2View"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:clickable="true"
+        android:layout_marginEnd="8dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="31dp"
+        android:text="Связаться  по номеру: \n 0700 800 000 или "
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/whatsapp2View"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/proobmen"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Конвертер валют"
+        android:textColor="@color/blue"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <LinearLayout
         android:id="@+id/gridLayout2"
         android:layout_width="368dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="28dp"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        tools:layout_editor_absoluteX="8dp">
+        tools:layout_editor_absoluteX="13dp">
 
 
         <Spinner
@@ -228,21 +332,40 @@
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="Формула:"
-             />
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/summaView"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
+            android:gravity="center"
             android:paddingLeft="2dp"
             android:paddingRight="2dp"
             android:text="Сумма"
+            android:textColor="@color/black"
             android:textSize="12sp" />
 
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/dateText"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:text="date text"
+        android:textColor="@color/blue"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
+        android:layout_marginRight="8dp"
+        app:layout_constraintVertical_bias="0.529"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
