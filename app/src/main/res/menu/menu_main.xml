@@ -3,19 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="kg.obval.ov.Tablo">
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="action_settings"
-        app:showAsAction="never" />
-    <item
         android:id="@+id/info"
         android:orderInCategory="100"
         android:title="О проекте"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/infoText2"
-        android:orderInCategory="100"
-        android:title="action_settings"
         app:showAsAction="never" />
     <item
         android:id="@+id/info2"

@@ -153,10 +153,35 @@ public class Tablo extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
-            return true;
-        } else if (id == R.id.info){
+        if (id == R.id.info){
+            dialog = new Dialog(Tablo.this);
+            dialog.setContentView(R.layout.menu);
+            dialog.setCancelable(true);
+            dialog.setTitle("О проекте");
+            LinearLayout linearLayout = (LinearLayout) findViewById(R.id.rubButton);
+            linearLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(Tablo.this, "test", Toast.LENGTH_SHORT).show();
+
+                }
+            });
            dialog.show();
+        }
+        else if (id == R.id.info2){
+            dialog = new Dialog(Tablo.this);
+            dialog.setContentView(R.layout.menuintruction);
+            dialog.setCancelable(true);
+            dialog.setTitle("Инструкция");
+            LinearLayout linearLayout = (LinearLayout) findViewById(R.id.rubButton);
+            linearLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(Tablo.this, "test", Toast.LENGTH_SHORT).show();
+
+                }
+            });
+            dialog.show();
         }
 
         return super.onOptionsItemSelected(item);
@@ -326,20 +351,6 @@ public class Tablo extends AppCompatActivity {
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("course");
-
-        dialog = new Dialog(Tablo.this);
-        dialog.setContentView(R.layout.menu);
-        dialog.setCancelable(true);
-        dialog.setTitle("О проекте");
-        dialog.setTitle("Инструкция");
-        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.rubButton);
-        linearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(Tablo.this, "test", Toast.LENGTH_SHORT).show();
-
-            }
-        });
 
     }
 }
