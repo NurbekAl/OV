@@ -267,7 +267,6 @@ public class Tablo extends AppCompatActivity {
         kupitprodat = (Spinner) findViewById(R.id.kupitprodat);
         resultatView = (TextView) findViewById(R.id.resultatView);
         summaView = (TextView) findViewById(R.id.summaView);
-        resultatView = (TextView) findViewById(R.id.resultatView);
         proobmen = (Button) findViewById(R.id.proobmen);
         whatsapp2View = (ImageView) findViewById(R.id.whatsapp2View);
         whatsapp2View.setOnClickListener(new View.OnClickListener() {
