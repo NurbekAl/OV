@@ -1,12 +1,19 @@
 package kg.obval.ov;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -50,10 +57,10 @@ public class Tablo extends AppCompatActivity {
     TextView dateText;
 
     EditText kolsummaEdit;
-    Spinner  spinnervalutado;
+    Spinner spinnervalutado;
     TextView naView;
-    Spinner  spinnervalutaposle;
-    Spinner  kupitprodat;
+    Spinner spinnervalutaposle;
+    Spinner kupitprodat;
     TextView resultatView;
     TextView summaView;
     Button proobmen;
@@ -69,6 +76,8 @@ public class Tablo extends AppCompatActivity {
     double tengepokupka;
     double tengeprodaja;
 
+    Dialog dialog;
+
     double result;
     int usingCurrency;
     int transferCurrency;
@@ -77,6 +86,8 @@ public class Tablo extends AppCompatActivity {
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
+
+    AlertDialog.Builder alertDialog;
 
 
     @Override
@@ -131,7 +142,27 @@ public class Tablo extends AppCompatActivity {
         spinnervalutado.setOnItemSelectedListener(onItemSelectedListener);
     }
 
-    void setResult(){
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_settings) {
+            return true;
+        } else if (id == R.id.info){
+           dialog.show();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    void setResult() {
         String inputTextValue = kolsummaEdit.getText().toString();
         if (!inputTextValue.equals("")) {
             inputValue = Double.parseDouble(inputTextValue);
@@ -163,21 +194,21 @@ public class Tablo extends AppCompatActivity {
 
     private int transValToInt(String valDo) {
         int result;
-        switch (valDo){
+        switch (valDo) {
             case "KGS":
-                result =1;
+                result = 1;
                 break;
             case "USD":
-                result =2;
+                result = 2;
                 break;
             case "EUR":
-                result =3;
+                result = 3;
                 break;
             case "RUB":
-                result =4;
+                result = 4;
                 break;
-            case  "KZT":
-                result =5;
+            case "KZT":
+                result = 5;
                 break;
             default:
                 result = 0;
@@ -187,14 +218,13 @@ public class Tablo extends AppCompatActivity {
         return result;
     }
 
-    private void spinnerHelper(){
-        String[] data = {"KGS","USD", "EUR", "RUB", "KZT"};
+    private void spinnerHelper() {
+        String[] data = {"KGS", "USD", "EUR", "RUB", "KZT"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnervalutado.setAdapter(adapter);
 
         spinnervalutaposle.setAdapter(adapter);
-
         String[] data2 = {"Купить", "Продать"};
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data2);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -244,7 +274,7 @@ public class Tablo extends AppCompatActivity {
         PokupkaView = (TextView) findViewById(R.id.pokupkaText);
         ProdajaView = (TextView) findViewById(R.id.prodajaText);
 
-        dollarView = (TextView)  findViewById(R.id.dollarText);
+        dollarView = (TextView) findViewById(R.id.dollarText);
         dollarPokupkaView = (TextView) findViewById(R.id.dollarPokupkaText);
         dollarProdazhaView = (TextView) findViewById(R.id.dollarProdazhaText);
 
@@ -258,9 +288,9 @@ public class Tablo extends AppCompatActivity {
 
         tengeView = (TextView) findViewById(R.id.tengeText);
         tengePokupkaView = (TextView) findViewById(R.id.tengePokupkaText);
-        tengeProdazhaView =(TextView) findViewById(R.id.tengeProdazhaText);
+        tengeProdazhaView = (TextView) findViewById(R.id.tengeProdazhaText);
 
-        kolsummaEdit = (EditText)  findViewById(R.id.kolsummaedit);
+        kolsummaEdit = (EditText) findViewById(R.id.kolsummaedit);
         spinnervalutado = (Spinner) findViewById(R.id.spinnervalutado);
         naView = (TextView) findViewById(R.id.naView);
         spinnervalutaposle = (Spinner) findViewById(R.id.spinnervalutaposle);
@@ -297,6 +327,11 @@ public class Tablo extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("course");
 
+        dialog = new Dialog(Tablo.this);
+        dialog.setContentView(R.layout.menu);
+        dialog.setCancelable(true);
+        dialog.setTitle("О проекте");
+        dialog.setTitle("Инструкция");
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.rubButton);
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -305,7 +340,6 @@ public class Tablo extends AppCompatActivity {
 
             }
         });
-
 
     }
 }
