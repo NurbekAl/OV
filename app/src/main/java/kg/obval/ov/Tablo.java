@@ -3,6 +3,8 @@ package kg.obval.ov;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -65,6 +67,7 @@ public class Tablo extends AppCompatActivity {
     TextView summaView;
     Button proobmen;
     ImageView whatsapp2View;
+    ImageView CallView;
     double inputValue;
 
     double dollarpokupka;
@@ -153,7 +156,7 @@ public class Tablo extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.info){
+        if (id == R.id.info) {
             dialog = new Dialog(Tablo.this);
             dialog.setContentView(R.layout.menu);
             dialog.setCancelable(true);
@@ -166,9 +169,8 @@ public class Tablo extends AppCompatActivity {
 
                 }
             });
-           dialog.show();
-        }
-        else if (id == R.id.info2){
+            dialog.show();
+        } else if (id == R.id.info2) {
             dialog = new Dialog(Tablo.this);
             dialog.setContentView(R.layout.menuintruction);
             dialog.setCancelable(true);
@@ -323,18 +325,36 @@ public class Tablo extends AppCompatActivity {
         resultatView = (TextView) findViewById(R.id.resultatView);
         summaView = (TextView) findViewById(R.id.summaView);
         proobmen = (Button) findViewById(R.id.proobmen);
+        CallView = (ImageView) findViewById(R.id.CallView);
+        CallView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "0700 800 000"));
+                if (ActivityCompat.checkSelfPermission(Tablo.this, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    // TODO: Consider calling
+                    //    ActivityCompat#requestPermissions
+                    // here to request the missing permissions, and then overriding
+                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                    //                                          int[] grantResults)
+                    // to handle the case where the user grants the permission. See the documentation
+                    // for ActivityCompat#requestPermissions for more details.
+                    return;
+                }
+                startActivity(intent);
+            }
+        });
         whatsapp2View = (ImageView) findViewById(R.id.whatsapp2View);
         whatsapp2View.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PackageManager pm=getPackageManager();
+                PackageManager pm = getPackageManager();
                 try {
 
                     Intent waIntent = new Intent(Intent.ACTION_SEND);
                     waIntent.setType("text/plain");
                     String text = "";
 
-                    PackageInfo info=pm.getPackageInfo("com.whatsapp", PackageManager.GET_META_DATA);
+                    PackageInfo info = pm.getPackageInfo("com.whatsapp", PackageManager.GET_META_DATA);
                     waIntent.setPackage("com.whatsapp");
 
                     waIntent.putExtra(Intent.EXTRA_TEXT, text);
@@ -351,6 +371,7 @@ public class Tablo extends AppCompatActivity {
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("course");
+
 
     }
 }
