@@ -1,17 +1,31 @@
 package kg.obval.ov;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
+import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AlertDialog;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -42,16 +56,18 @@ public class Tablo extends AppCompatActivity {
     TextView tengeView;
     TextView tengePokupkaView;
     TextView tengeProdazhaView;
+    TextView dateText;
 
     EditText kolsummaEdit;
-    Spinner  spinnervalutado;
+    Spinner spinnervalutado;
     TextView naView;
-    Spinner  spinnervalutaposle;
-    Spinner  kupitprodat;
+    Spinner spinnervalutaposle;
+    Spinner kupitprodat;
     TextView resultatView;
     TextView summaView;
     Button proobmen;
-
+    ImageView whatsapp2View;
+    ImageView CallView;
     double inputValue;
 
     double dollarpokupka;
@@ -63,6 +79,8 @@ public class Tablo extends AppCompatActivity {
     double tengepokupka;
     double tengeprodaja;
 
+    Dialog dialog;
+
     double result;
     int usingCurrency;
     int transferCurrency;
@@ -71,6 +89,8 @@ public class Tablo extends AppCompatActivity {
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
+
+    AlertDialog.Builder alertDialog;
 
 
     @Override
@@ -125,7 +145,51 @@ public class Tablo extends AppCompatActivity {
         spinnervalutado.setOnItemSelectedListener(onItemSelectedListener);
     }
 
-    void setResult(){
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.info) {
+            dialog = new Dialog(Tablo.this);
+            dialog.setContentView(R.layout.menu);
+            dialog.setCancelable(true);
+            dialog.setTitle("О проекте");
+            LinearLayout linearLayout = (LinearLayout) findViewById(R.id.rubButton);
+            linearLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(Tablo.this, "test", Toast.LENGTH_SHORT).show();
+
+                }
+            });
+            dialog.show();
+        } else if (id == R.id.info2) {
+            dialog = new Dialog(Tablo.this);
+            dialog.setContentView(R.layout.menuintruction);
+            dialog.setCancelable(true);
+            dialog.setTitle("Инструкция");
+            LinearLayout linearLayout = (LinearLayout) findViewById(R.id.rubButton);
+            linearLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(Tablo.this, "test", Toast.LENGTH_SHORT).show();
+
+                }
+            });
+            dialog.show();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    void setResult() {
         String inputTextValue = kolsummaEdit.getText().toString();
         if (!inputTextValue.equals("")) {
             inputValue = Double.parseDouble(inputTextValue);
@@ -157,21 +221,21 @@ public class Tablo extends AppCompatActivity {
 
     private int transValToInt(String valDo) {
         int result;
-        switch (valDo){
+        switch (valDo) {
             case "KGS":
-                result =1;
+                result = 1;
                 break;
             case "USD":
-                result =2;
+                result = 2;
                 break;
             case "EUR":
-                result =3;
+                result = 3;
                 break;
             case "RUB":
-                result =4;
+                result = 4;
                 break;
-            case  "KZT":
-                result =5;
+            case "KZT":
+                result = 5;
                 break;
             default:
                 result = 0;
@@ -181,17 +245,13 @@ public class Tablo extends AppCompatActivity {
         return result;
     }
 
-    private void spinnerHelper(){
-        String[] data = {"KGS","USD", "EUR", "RUB", "KZT"};
+    private void spinnerHelper() {
+        String[] data = {"KGS", "USD", "EUR", "RUB", "KZT"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnervalutado.setAdapter(adapter);
 
-        String[] data1 = {"KGS","USD", "EUR", "RUB", "KZT"};
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data1);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnervalutaposle.setAdapter(adapter1);
-
+        spinnervalutaposle.setAdapter(adapter);
         String[] data2 = {"Купить", "Продать"};
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data2);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -213,6 +273,7 @@ public class Tablo extends AppCompatActivity {
                 rublProdazhaView.setText(String.valueOf(course.getRUBprod()));
                 tengePokupkaView.setText(String.valueOf(course.getKZTpok()));
                 tengeProdazhaView.setText(String.valueOf(course.getKZTprod()));
+                dateText.setText(String.valueOf("Курс валют на " + course.getDate() + "г. " + course.getTime() + " часов"));
             }
 
             @Override
@@ -237,39 +298,80 @@ public class Tablo extends AppCompatActivity {
 
     private void init() {
 
-        PokupkaView = (TextView) findViewById(R.id.pokupkaView);
-        ProdajaView = (TextView) findViewById(R.id.prodajaView);
+        PokupkaView = (TextView) findViewById(R.id.pokupkaText);
+        ProdajaView = (TextView) findViewById(R.id.prodajaText);
 
-        dollarView = (TextView)  findViewById(R.id.dollarView);
-        dollarPokupkaView = (TextView) findViewById(R.id.dollarPokupkaView);
-        dollarProdazhaView = (TextView) findViewById(R.id.dollarProdazhaView);
+        dollarView = (TextView) findViewById(R.id.dollarText);
+        dollarPokupkaView = (TextView) findViewById(R.id.dollarPokupkaText);
+        dollarProdazhaView = (TextView) findViewById(R.id.dollarProdazhaText);
 
-        euroView = (TextView) findViewById(R.id.euroView);
-        euroPokupkaView = (TextView) findViewById(R.id.euroPokupkaView);
-        euroProdazhaView = (TextView) findViewById(R.id.euroProdazhaView);
+        euroView = (TextView) findViewById(R.id.euroText);
+        euroPokupkaView = (TextView) findViewById(R.id.euroPokupkaText);
+        euroProdazhaView = (TextView) findViewById(R.id.euroProdazhaText);
 
-        rublView = (TextView) findViewById(R.id.rublView);
-        rublPokupkaView = (TextView) findViewById(R.id.rublPokupkaView);
-        rublProdazhaView = (TextView) findViewById(R.id.rublProdajaView);
+        rublView = (TextView) findViewById(R.id.rublText);
+        rublPokupkaView = (TextView) findViewById(R.id.rublPokupkaText);
+        rublProdazhaView = (TextView) findViewById(R.id.rublProdajaText);
 
-        tengeView = (TextView) findViewById(R.id.tengeView);
-        tengePokupkaView = (TextView) findViewById(R.id.tengePokupkaView);
-        tengeProdazhaView =(TextView) findViewById(R.id.tengeProdazhaView);
+        tengeView = (TextView) findViewById(R.id.tengeText);
+        tengePokupkaView = (TextView) findViewById(R.id.tengePokupkaText);
+        tengeProdazhaView = (TextView) findViewById(R.id.tengeProdazhaText);
 
-        kolsummaEdit = (EditText)  findViewById(R.id.kolsummaedit);
+        kolsummaEdit = (EditText) findViewById(R.id.kolsummaedit);
         spinnervalutado = (Spinner) findViewById(R.id.spinnervalutado);
         naView = (TextView) findViewById(R.id.naView);
         spinnervalutaposle = (Spinner) findViewById(R.id.spinnervalutaposle);
         kupitprodat = (Spinner) findViewById(R.id.kupitprodat);
         resultatView = (TextView) findViewById(R.id.resultatView);
         summaView = (TextView) findViewById(R.id.summaView);
-        resultatView = (TextView) findViewById(R.id.resultatView);
         proobmen = (Button) findViewById(R.id.proobmen);
+        CallView = (ImageView) findViewById(R.id.CallView);
+        CallView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "0700 800 000"));
+                if (ActivityCompat.checkSelfPermission(Tablo.this, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    // TODO: Consider calling
+                    //    ActivityCompat#requestPermissions
+                    // here to request the missing permissions, and then overriding
+                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                    //                                          int[] grantResults)
+                    // to handle the case where the user grants the permission. See the documentation
+                    // for ActivityCompat#requestPermissions for more details.
+                    return;
+                }
+                startActivity(intent);
+            }
+        });
+        whatsapp2View = (ImageView) findViewById(R.id.whatsapp2View);
+        whatsapp2View.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PackageManager pm = getPackageManager();
+                try {
 
+                    Intent waIntent = new Intent(Intent.ACTION_SEND);
+                    waIntent.setType("text/plain");
+                    String text = "";
+
+                    PackageInfo info = pm.getPackageInfo("com.whatsapp", PackageManager.GET_META_DATA);
+                    waIntent.setPackage("com.whatsapp");
+
+                    waIntent.putExtra(Intent.EXTRA_TEXT, text);
+                    startActivity(Intent.createChooser(waIntent, "Share with"));
+
+                } catch (PackageManager.NameNotFoundException e) {
+                    Toast.makeText(Tablo.this, "WhatsApp not Installed", Toast.LENGTH_SHORT)
+                            .show();
+                }
+            }
+        });
         resultatView.setTextSize(12);
+        dateText = (TextView) findViewById(R.id.dateText);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("course");
+
 
     }
 }

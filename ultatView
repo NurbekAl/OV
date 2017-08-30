@@ -1,0 +1,117 @@
+[1mdiff --git a/app/src/main/java/kg/obval/ov/Calculator.java b/app/src/main/java/kg/obval/ov/Calculator.java[m
+[1mindex 2f283c1..62250e5 100644[m
+[1m--- a/app/src/main/java/kg/obval/ov/Calculator.java[m
+[1m+++ b/app/src/main/java/kg/obval/ov/Calculator.java[m
+[36m@@ -14,36 +14,35 @@[m [mclass Calculator {[m
+                           Course kv) {[m
+ [m
+ [m
+[31m-[m
+[31m-        if(usingCurrency == 1){ //1 == сом[m
+[31m-            switch (transferCurrency){[m
+[32m+[m[32m        if (usingCurrency == 1) { //1 == сом[m
+[32m+[m[32m            switch (transferCurrency) {[m
+                 case 1:[m
+[31m-                    if(pokupkaOrProdaja == 1){[m
+[32m+[m[32m                    if (pokupkaOrProdaja == 1) {[m
+                         result = inputValue;[m
+[31m-                    }else result = inputValue;[m
+[32m+[m[32m                    } else result = inputValue;[m
+                     break;[m
+                 case 2: //2 == dollar[m
+[31m-                    if(pokupkaOrProdaja == 1){[m
+[31m-                        result = inputValue/kv.getUSDprod();[m
+[31m-                    }else result = inputValue/kv.getUSDpok();[m
+[32m+[m[32m                    if (pokupkaOrProdaja == 1) {[m
+[32m+[m[32m                        result = inputValue / kv.getUSDprod();[m
+[32m+[m[32m                    } else result = inputValue / kv.getUSDpok();[m
+                     break;[m
+                 case 3: //3 == euro[m
+[31m-                    if(pokupkaOrProdaja == 1){[m
+[31m-                        result = inputValue/kv.getEURprod();[m
+[31m-                    }else result = inputValue/kv.getEURpok();[m
+[32m+[m[32m                    if (pokupkaOrProdaja == 1) {[m
+[32m+[m[32m                        result = inputValue / kv.getEURprod();[m
+[32m+[m[32m                    } else result = inputValue / kv.getEURpok();[m
+                     break;[m
+                 case 4: //4 == ruble[m
+[31m-                    if(pokupkaOrProdaja == 1){[m
+[31m-                        result = inputValue/kv.getRUBprod();[m
+[31m-                    }else result = inputValue/kv.getRUBpok();[m
+[32m+[m[32m                    if (pokupkaOrProdaja == 1) {[m
+[32m+[m[32m                        result = inputValue / kv.getRUBprod();[m
+[32m+[m[32m                    } else result = inputValue / kv.getRUBpok();[m
+                     break;[m
+                 case 5: //5 == tenge[m
+[31m-                    if(pokupkaOrProdaja == 1){[m
+[31m-                        result = inputValue/kv.getKZTprod();[m
+[31m-                    }else result = inputValue/kv.getKZTpok();[m
+[32m+[m[32m                    if (pokupkaOrProdaja == 1) {[m
+[32m+[m[32m                        result = inputValue / kv.getKZTprod();[m
+[32m+[m[32m                    } else result = inputValue / kv.getKZTpok();[m
+                     break;[m
+             }[m
+[31m-        }else if(usingCurrency == 2) { //2 == доллар[m
+[32m+[m[32m        } else if (usingCurrency == 2) { //2 == доллар[m
+             switch (transferCurrency) {[m
+                 case 1:[m
+                     if (pokupkaOrProdaja == 1) {[m
+[36m@@ -71,7 +70,7 @@[m [mclass Calculator {[m
+                     } else result = inputValue * kv.getKZTpok() / kv.getUSDprod();[m
+                     break;[m
+             }[m
+[31m-        }else if(usingCurrency == 3) { //3 == эвро[m
+[32m+[m[32m        } else if (usingCurrency == 3) { //3 == эвро[m
+             switch (transferCurrency) {[m
+                 case 1:[m
+                     if (pokupkaOrProdaja == 1) {[m
+[36m@@ -80,8 +79,8 @@[m [mclass Calculator {[m
+                     break;[m
+                 case 2: //2 == dollar[m
+                     if (pokupkaOrProdaja == 1) {[m
+[31m-                        result = inputValue * kv.getEURpok()/kv.getUSDprod();[m
+[31m-                    } else result = inputValue * kv.getUSDpok()/kv.getEURprod();[m
+[32m+[m[32m                        result = inputValue * kv.getEURpok() / kv.getUSDprod();[m
+[32m+[m[32m                    } else result = inputValue * kv.getUSDpok() / kv.getEURprod();[m
+                     break;[m
+                 case 3: //3 == euro[m
+                     if (pokupkaOrProdaja == 1) {[m
+[36m@@ -99,9 +98,35 @@[m [mclass Calculator {[m
+                     } else result = inputValue * kv.getKZTpok() / kv.getEURprod();[m
+                     break;[m
+             }[m
+[32m+[m[32m        } else if (usingCurrency == 4) { //4 == рубль[m
+[32m+[m[32m            switch (transferCurrency) {[m
+[32m+[m[32m                case 1:[m
+[32m+[m[32m                    if (pokupkaOrProdaja == 1) {[m
+[32m+[m[32m                        result = inputValue * kv.getRUBprod();[m
+[32m+[m[32m                    } else result = inputValue * kv.getRUBpok();[m
+[32m+[m[32m                    break;[m
+[32m+[m[32m                case 2: //2 == dollar[m
+[32m+[m[32m                    if (pokupkaOrProdaja == 1) {[m
+[32m+[m[32m                        result = inputValue * kv.getRUBpok() / kv.getUSDprod();[m
+[32m+[m[32m                    } else result = inputValue * kv.getUSDpok() / kv.getRUBprod();[m
+[32m+[m[32m                    break;[m
+[32m+[m[32m                case 3: //3 == euro[m
+[32m+[m[32m                    if (pokupkaOrProdaja == 1) {[m
+[32m+[m[32m                        result = inputValue * kv.getRUBpok() / kv.getEURprod();[m
+[32m+[m[32m                    } else result = inputValue * kv.getEURpok() / kv.getRUBprod();[m
+[32m+[m[32m                    break;[m
+[32m+[m[32m                case 4: //4 == ruble[m
+[32m+[m[32m                    if (pokupkaOrProdaja == 1) {[m
+[32m+[m[32m                        result = inputValue;[m
+[32m+[m[32m                    } else result = inputValue;[m
+[32m+[m[32m                    break;[m
+[32m+[m[32m                case 5: //5 == tenge[m
+[32m+[m[32m                    if (pokupkaOrProdaja == 1) {[m
+[32m+[m[32m                        result = inputValue * kv.getRUBpok() / kv.getKZTprod();[m
+[32m+[m[32m                    } else result = inputValue * kv.getKZTpok() / kv.getRUBprod();[m
+[32m+[m[32m                    break;[m
+[32m+[m[32m            }[m
+         }[m
+[31m-[m
+         return result;[m
+     }[m
+[31m-[m
+ }[m
+\ No newline at end of file[m

@@ -7,6 +7,9 @@ package kg.obval.ov;
 class Course {
 
 
+    private String time;
+    private String date;
+
     public Course() {
         this.USDpok = 0;
         this.USDprod = 0;
@@ -124,5 +127,22 @@ class Course {
 
     public void setKGSprod(double KGSprod) {
         this.KGSprod = KGSprod;
+    }
+
+
+    public String getTime() {
+        return time;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }
